@@ -109,7 +109,8 @@ class Article(models.Model):
         if relative:
             return None
         else:
-            return os.path.join(settings.REPO_ARTICLE_PATH, self.slug)
+            return os.path.join(settings.REPO_ARTICLE_PATH, str(
+                    self.pk) + '_' + self.slug)
 
     def load_json(self, path=None, online=False):
         if path is None:
